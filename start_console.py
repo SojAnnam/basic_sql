@@ -1,5 +1,5 @@
 import psycopg2
-from sql1 import *
+from sql_query import *
 
 
 def start_module():
