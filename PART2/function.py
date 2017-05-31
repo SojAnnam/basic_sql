@@ -45,6 +45,29 @@ def SQL_QUERY_show_mentors_and_schools():
     return if_request_get(str(mentors_and_schools))
 
 
+def SQL_QUERY_select_schools():
+    for key in request.args:
+        condition = request.args.get(key)
+    select_schools = """SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                    FROM mentors
+                    LEFT JOIN schools ON mentors.city=schools.city
+                    WHERE schools.name = '{}'
+                    ORDER BY mentors.id""".format(condition)
+    return if_request_get(str(select_schools))
+
+
+def SQL_QUERY_select_country():
+    for key in request.args:
+        condition = request.args.get(key)
+    select_country = """SELECT  schools.country, COUNT(mentors.id) AS NumberOfMentors 
+                    FROM mentors
+                    FULL OUTER JOIN schools ON mentors.city=schools.city
+                    WHERE country= '{}'
+                    GROUP BY country
+                   ;""".format(condition)
+    return if_request_get(str(select_country))
+
+
 def SQL_QUERY_show_all_schools():
     all_schools = """SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
                     FROM mentors
@@ -54,7 +77,7 @@ def SQL_QUERY_show_all_schools():
 
 
 def SQL_QUERY_show_mentors_by_country():
-    mentors_by_country = """SELECT  schools.country, COUNT(mentors.id) AS NumberOfMentors 
+    mentors_by_country = """SELECT  schools.country, COUNT(mentors.id) AS NumberOfMentors
                     FROM mentors
                     FULL OUTER JOIN schools ON mentors.city=schools.city
                     GROUP BY country
@@ -76,6 +99,25 @@ def SQL_QUERY_show_applicants():
                     FROM applicants
                     LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
                     WHERE  creation_date   > make_date(2016,01,01)
+                    ORDER BY creation_date DESC"""
+    return if_request_get(str(applicants))
+
+
+def SQL_QUERY_show_all_applicants():
+    applicants = """SELECT   applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+                    FROM applicants
+                    LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
+                    ORDER BY creation_date DESC"""
+    return if_request_get(str(applicants))
+
+
+def SQL_QUERY_show_select_applicants():
+    year = request.form['year']
+    month = request.form['month']
+    day = request.form['day']
+    applicants = """SELECT   applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+                    FROM applicants
+                    LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
                     ORDER BY creation_date DESC"""
     return if_request_get(str(applicants))
 
