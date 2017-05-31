@@ -61,3 +61,29 @@ def SQL_QUERY_show_mentors_by_country():
                     ORDER BY country
                    ;"""
     return if_request_get(str(mentors_by_country))
+
+
+def SQL_QUERY_show_contacts():
+    contacts = """SELECT   schools.name, mentors.first_name, mentors.last_name 
+                    FROM mentors
+                    INNER JOIN schools ON mentors.id=contact_person
+                    ORDER BY name"""
+    return if_request_get(str(contacts))
+
+
+def SQL_QUERY_show_applicants():
+    applicants = """SELECT   applicants.first_name, applicants.application_code, applicants_mentors.creation_date
+                    FROM applicants
+                    LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
+                    WHERE  creation_date   > make_date(2016,01,01)
+                    ORDER BY creation_date DESC"""
+    return if_request_get(str(applicants))
+
+
+def SQL_QUERY_show_applicants_and_mentors():
+    applicants_and_mentors = """SELECT   applicants.first_name, applicants.application_code, mentors.first_name, mentors.last_name
+                    FROM applicants
+                    FULL OUTER JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
+                    LEFT JOIN mentors ON mentors.id = applicants_mentors.mentor_id
+                    ORDER BY applicants.id"""
+    return if_request_get(str(applicants_and_mentors))

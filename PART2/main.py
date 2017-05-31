@@ -31,17 +31,23 @@ def show_mentors_by_country():
     return render_template('table.html', table=mentors_by_country)
 
 
-"""@app.route('/contacts')
+@app.route('/contacts')
 def show_contacts():
+    contacts = function.SQL_QUERY_show_contacts()
+    return render_template('table.html', table=contacts)
 
 
 @app.route('/applicants')
 def show_applicants():
+    applicants = function.SQL_QUERY_show_applicants()
+    return render_template('table.html', table=applicants)
 
 
 @app.route('/applicants-and-mentors')
-def show_applicants_and_mentors():"""
+def show_applicants_and_mentors():
+    applicants_and_mentors = function.SQL_QUERY_show_applicants_and_mentors()
+    return render_template('table.html', table=applicants_and_mentors)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
