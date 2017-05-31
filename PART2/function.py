@@ -46,4 +46,18 @@ def SQL_QUERY_show_mentors_and_schools():
 
 
 def SQL_QUERY_show_all_schools():
-    pass
+    all_schools = """SELECT mentors.first_name, mentors.last_name, schools.name, schools.country
+                    FROM mentors
+                    FULL OUTER JOIN schools ON mentors.city=schools.city
+                    ORDER BY mentors.id"""
+    return if_request_get(str(all_schools))
+
+
+def SQL_QUERY_show_mentors_by_country():
+    mentors_by_country = """SELECT  schools.country, COUNT(mentors.id) AS NumberOfMentors 
+                    FROM mentors
+                    FULL OUTER JOIN schools ON mentors.city=schools.city
+                    GROUP BY country
+                    ORDER BY country
+                   ;"""
+    return if_request_get(str(mentors_by_country))
