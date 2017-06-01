@@ -34,19 +34,19 @@ def show_all_schools():
 @app.route('/mentors-by-country', methods=["GET"])
 def show_mentors_by_country():
     mentors_by_country = function.SQL_QUERY_show_mentors_by_country()
-    return render_template('table.html', country=mentors_by_country)
+    return render_template('table.html', table=mentors_by_country)
 
 
 @app.route('/mentors-by-country/country', methods=["GET"])
 def show_one_country():
     select_one_country = function.SQL_QUERY_select_country()
-    return render_template('table.html', country=select_one_country)
+    return render_template('table.html', table=select_one_country)
 
 
 @app.route('/contacts', methods=["GET"])
 def show_contacts():
     contacts = function.SQL_QUERY_show_contacts()
-    return render_template('table.html', contacts=contacts)
+    return render_template('table.html', table=contacts)
 
 
 @app.route('/applicants', methods=["GET"])
@@ -76,6 +76,12 @@ def show_select_applicants():
 def show_applicants_and_mentors():
     applicants_and_mentors = function.SQL_QUERY_show_applicants_and_mentors()
     return render_template('table2.html', table=applicants_and_mentors)
+
+
+""""
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.html'), 404"""
 
 
 if __name__ == '__main__':

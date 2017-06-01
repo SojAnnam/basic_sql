@@ -2,16 +2,17 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="{{ url_for ( 'static', filename='mentors.css' ) }}">
     <title> Codecool Application process - SQL PART2 </title>
     <style>
-
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Space+Mono');
     </style>
 </head>
 
 <body>
-    <h3> Codecool Application Process - SQL PART2 </h3>
-
-    <ul>
+    <h2> Mentors </h2>
+    <p><a href="/">Back to Home</a></p>
+    <ul class="school">
         <li>
             <a href={{url_for( 'show_mentors_and_schools')}}>All Mentors</a>
         </li>
@@ -20,15 +21,30 @@
         </li>
 
         <li>
-            <a href={{url_for( 'show_one_schools_mentors', name="Codecool BP" )}}>Codecool BP</a>
+            <a href={{url_for( 'show_one_schools_mentors', name="Codecool BP" )}}>Codecool Budapest</a>
         </li>
         <li>
-            <a href={{url_for( 'show_one_schools_mentors', name="Codecool Krak" )}}>Codecool Krak</a>
+            <a href={{url_for( 'show_one_schools_mentors', name="Codecool Msc" )}}>Codecool Miskolc</a>
         </li>
         <li>
-            <a href={{url_for( 'show_one_schools_mentors', name="Codecool Msc" )}}>Codecool Msc</a>
+            <a href={{url_for( 'show_one_schools_mentors', name="Codecool Krak" )}}>Codecool Krakow</a>
+        </li>
+        <li>
+            <a href={{url_for( 'show_contacts')}}>Contacts</a>
         </li>
     </ul>
+    <ul class="country">
+        <li>
+            <a href={{url_for( 'show_mentors_by_country')}}>Mentors by Country</a>
+        </li>
+        <li>
+            <a href={{url_for( 'show_one_country',country="Hungary" )}}>Hungary</a>
+        </li>
+        <li>
+            <a href={{url_for( 'show_one_country', country="Poland" )}}>Poland</a>
+        </li>
+    </ul>
+
     <table>
         {% for row in table %}
         <tr>
@@ -39,42 +55,7 @@
         </tr>
         {% endfor %}
     </table>
-    <ul>
-        <li>
-            <a href={{url_for( 'show_mentors_by_country')}}>Number Of Mentors by Country</a>
-        </li>
-        <li>
-            <a href={{url_for( 'show_one_country',country="Hungary" )}}>Hungary</a>
-        </li>
-        <li>
-            <a href={{url_for( 'show_one_country', country="Poland" )}}>Poland</a>
-        </li>
-    </ul>
-    <table>
-        {% for item in country %}
-        <tr>
-            <td>{{item[0]}}</td>
-            <td>{{item[1]}}</td>
-            <td>{{item[2]}}</td>
-            <td>{{item[3]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <ul>
-        <li>
-            <a href={{url_for( 'show_contacts')}}>Contact</a>
-        </li>
-    </ul>
-    <table>
-        {% for contact in contacts %}
-        <tr>
-            <td>{{contact[0]}}</td>
-            <td>{{contact[1]}}</td>
-            <td>{{contact[2]}}</td>
-            <td>{{contact[3]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <p><a href="/">Back to Home</a></p>
 
 </body>
 

@@ -1,0 +1,60 @@
+
+body {
+    background-image:url(/static/city.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed
+}
+
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+@keyframes rightmove {
+    from {right: 0px;}
+    to {right: 400px;}
+}
+.mentors {
+    position:relative;
+    top:100px
+}
+h2{
+    font-family: 'Press Start 2P', cursive;
+    font-size:40px
+}
+ul{
+    font-family: 'Space Mono', monospace;
+    font-size:30px
+}
+.mentors{
+    animation:mymove;
+    animation-duration: 5s;
+    animation-delay:0s;
+    animation-fill-mode:both
+    }
+
+.applicants {
+    position:absolute;
+    animation-name:rightmove;
+    animation-duration: 5s;
+    animation-delay:0s;
+    animation-fill-mode:both
+    }
+
+ul {
+    list-style-type: none;
+    block-size:400px
+}
+a{
+    color:black;
+    text-decoration-line: none;
+    transition: transform 1s ease-out, bottom 1s ease-out, margin 1s 1s ease-out, left 1s 1s ease-out, right 1s 1s ease-out;
+}
+
+a:hover{
+    color:white;
+    font-family:'Press Start 2P', cursive;
+    font-size:30px
+}

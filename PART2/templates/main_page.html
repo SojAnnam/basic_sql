@@ -2,22 +2,31 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="{{ url_for ( 'static', filename='main_page.css' ) }}">
     <title> Codecool Application process - SQL PART2 </title>
     <style>
-
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Space+Mono');
     </style>
 </head>
 
 <body>
     <h3> Codecool Application Process - SQL PART2 </h3>
-    <ul>
-        <li><a href={{url_for( 'show_mentors_and_schools')}}>Mentors and Schools</a></li>
-        <li><a href={{url_for( 'show_all_schools')}}>All Schools</a></li>
-        <li><a href={{url_for( 'show_mentors_by_country')}}>Mentors by Country</a></li>
-        <li><a href={{url_for( 'show_contacts')}}>Codecool's Contacts</a></li>
-        <li><a href={{url_for( 'show_applicants')}}>Applicants</a></li>
-        <li><a href={{url_for( 'show_applicants_and_mentors')}}>Applicants and Mentors</a></li>
-    </ul>
+    <div class="mentors">
+        <h2>Mentors</h2>
+        <ul>
+            <li><a href={{url_for( 'show_mentors_and_schools')}}>Mentors and Schools</a></li>
+            <li><a href={{url_for( 'show_all_schools')}}>All Schools</a></li>
+            <li><a href={{url_for( 'show_mentors_by_country')}}>Mentors by Country</a></li>
+            <li><a href={{url_for( 'show_contacts')}}>Codecool's Contacts</a></li>
+        </ul>
+    </div>
+    <div class="applicants">
+        <h2>Applicants</h2>
+        <ul>
+            <li><a href={{url_for( 'show_applicants')}}>Applicants</a></li>
+            <li><a href={{url_for( 'show_applicants_and_mentors')}}>Applicants and Mentors</a></li>
+        </ul>
+    </div>
 
 </body>
 

@@ -2,15 +2,38 @@
 <html>
 
 <head>
-
-    <title> Codecool Application process - SQL PART2 </title>
+    <link rel="stylesheet" href="{{ url_for ( 'static', filename='table2.css' ) }}">
+    <title>Applicants </title>
     <style>
-
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Space+Mono');
     </style>
+
 </head>
 
 <body>
-    <h3> Codecool Application Process - SQL PART2 </h3>
+    <h2> Applications </h2>
+    <p><a href="/">Back to Home</a></p>
+    <ul class="applicants">
+
+        <li>
+            <a href={{url_for( 'show_all_applicants')}}>All Applicants</a>
+        </li>
+        <li>
+            <a href={{url_for( 'show_applicants')}}>All Applicants(after 2016-01-01)</a>
+        </li>
+        <li>
+            <a href={{url_for( 'show_applicants_and_mentors')}}>Applicants and Mentors</a>
+        </li>
+        <li>
+            Select Applicants
+            <form action={{url_for( 'show_select_applicants')}} method="POST">
+                <input type="number" name="year" min="2015" max="2016">
+                <input type="number" name="month" min="01" max="12"><input type="number" name="day" min="01" max="31">
+                <input type="submit">
+            </form>
+        </li>
+
+    </ul>
     <div class=table>
         <table>
             {% for row in table %}
@@ -23,26 +46,6 @@
             {% endfor %}
         </table>
     </div>
-    <ul>
-        <li>
-            <a href={{url_for( 'show_applicants')}}>All Applicants(after 2016-01-01)</a>
-        </li>
-        <li>
-            <a href={{url_for( 'show_all_applicants')}}>All Applicants</a>
-        </li>
-        <li>
-            Select Applicants
-            <form action={{url_for( 'show_select_applicants')}} method="POST">
-                <input type="number" name="year" min="2015" max="2016">
-                <input type="number" name="month" min="01" max="12"><input type="number" name="day" min="01" max="31">
-                <input type="submit">
-            </form>
-        </li>
-        <li>
-            <a href={{url_for( 'show_applicants_and_mentors')}}>Applicants and Mentors</a>
-        </li>
-    </ul>
-
 
 </body>
 
