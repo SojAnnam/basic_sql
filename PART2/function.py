@@ -98,7 +98,7 @@ def SQL_QUERY_show_applicants():
     applicants = """SELECT   applicants.first_name, applicants.application_code, applicants_mentors.creation_date
                     FROM applicants
                     LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
-                    WHERE  creation_date   > make_date(2016,01,01)
+                    WHERE  creation_date >= make_date(2016,01,01)
                     ORDER BY creation_date DESC"""
     return if_request_get(str(applicants))
 
@@ -118,7 +118,8 @@ def SQL_QUERY_show_select_applicants():
     applicants = """SELECT   applicants.first_name, applicants.application_code, applicants_mentors.creation_date
                     FROM applicants
                     LEFT JOIN applicants_mentors ON applicants.id=applicants_mentors.applicant_id
-                    ORDER BY creation_date DESC"""
+                    WHERE  creation_date >= make_date({},{},{})
+                    ORDER BY creation_date DESC""".format(year, month, day)
     return if_request_get(str(applicants))
 
 

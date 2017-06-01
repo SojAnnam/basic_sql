@@ -61,8 +61,13 @@ def show_all_applicants():
     return render_template('table2.html', table=all_applicants)
 
 
-@app.route('/applicants/select', methods=["post"])
+@app.route('/applicants/select', methods=["POST"])
 def show_select_applicants():
+    year = request.form['year']
+    month = request.form['month']
+    day = request.form['day']
+    print(year, month, day)
+    print('ok')
     all_applicants = function.SQL_QUERY_show_select_applicants()
     return render_template('table2.html', table=all_applicants)
 

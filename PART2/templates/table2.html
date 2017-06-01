@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <title> Codecool Application process - SQL PART2 </title>
     <style>
 
@@ -10,16 +11,18 @@
 
 <body>
     <h3> Codecool Application Process - SQL PART2 </h3>
-    <table>
-        {% for row in table %}
-        <tr>
-            <td>{{row[0]}}</td>
-            <td>{{row[1]}}</td>
-            <td>{{row[2]}}</td>
-            <td>{{row[3]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class=table>
+        <table>
+            {% for row in table %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     <ul>
         <li>
             <a href={{url_for( 'show_applicants')}}>All Applicants(after 2016-01-01)</a>
@@ -28,7 +31,15 @@
             <a href={{url_for( 'show_all_applicants')}}>All Applicants</a>
         </li>
         <li>
-            <a href={{url_for( 'show_select_applicants',date="True" )}}>Select Applicants</a>
+            Select Applicants
+            <form action={{url_for( 'show_select_applicants')}} method="POST">
+                <input type="number" name="year" min="2015" max="2016">
+                <input type="number" name="month" min="01" max="12"><input type="number" name="day" min="01" max="31">
+                <input type="submit">
+            </form>
+        </li>
+        <li>
+            <a href={{url_for( 'show_applicants_and_mentors')}}>Applicants and Mentors</a>
         </li>
     </ul>
 
