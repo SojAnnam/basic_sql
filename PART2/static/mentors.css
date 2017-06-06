@@ -12,12 +12,12 @@ body {
 
 @keyframes mymove {
     from {left: 0px;}
-    to {left: 300px;}
+    to {left: 500px;}
 }
 
 @keyframes rightmove {
     from {right: 0px;}
-    to {right: 300px;}
+    to {right: 500px;}
 }
 .school {
     position:relative;
